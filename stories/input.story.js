@@ -29,15 +29,20 @@ storiesOf('Input', module)
             const state = select('State', inputStates, 'normal');
 
             return (
-                <Input
-                    size={size}
-                    type={type}
-                    state={state}
-                    disabled={disabled}
-                    placeholder={placeholder}
-                    feedbackText={feedbackText}
-                    onChange={action(onChangeText)}
-                />
+                <div>
+                    <h1 className="display-4">Input > Standard</h1>
+                    <hr className="m-0 mb-5 separator"/>
+                    <p>Try it:</p>
+                    <Input
+                        size={size}
+                        type={type}
+                        state={state}
+                        disabled={disabled}
+                        placeholder={placeholder}
+                        feedbackText={feedbackText}
+                        onChange={action(onChangeText)}
+                    />
+                </div>
             );
         })
     );
