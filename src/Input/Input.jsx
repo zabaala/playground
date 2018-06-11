@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { inputSizes } from './InputUtils';
+import {inputSizes, inputSizesClassed, inputTypes, inputStates} from './InputUtils';
 
 class Input extends Component {
 
     static defaultProps = {
-        type: 'txt',
-        size: 'default',
+        type: 'text',
+        size: 'normal',
+        state: 'normal',
         disabled: false,
         placeholder: '',
         onChange: () => {},
@@ -15,6 +16,8 @@ class Input extends Component {
     };
 
     static propTypes = {
+        /** Element ref */
+        _ref: PropTypes.func,
         /**
          * HTML ID of element
          */
@@ -22,13 +25,12 @@ class Input extends Component {
         /**
          * Possible element states.
          */
-        state: PropTypes.arrayOf(['error', 'warning', 'default', 'success']),
+        state: PropTypes.oneOf(inputStates),
         /**
          * Appear when have some content.
          * The color is changed based on selected state.
          */
         feedbackText: PropTypes.string,
-        _ref: PropTypes.func,
         /**
          * Disable or enable the component.
          */
@@ -40,7 +42,7 @@ class Input extends Component {
         /**
          * Type of component.
          */
-        type: PropTypes.oneOf(['txt', 'number', 'email', 'password']),
+        type: PropTypes.oneOf(inputTypes),
         /**
          * Available sizes of component.
          */
@@ -102,10 +104,10 @@ class Input extends Component {
      * @returns {XML}
      */
     render() {
-        let className = inputSizes[this.props.size];
+        let className = inputSizesClassed[this.props.size];
 
-        this.props.invalid && (className += ' is-invalid');
-        this.props.success && (className += ' state-valid');
+        this.props.state === 'error' && (className += ' is-invalid state-invalid');
+        this.props.state === 'success' && (className += ' is-valid state-valid');
 
         return (
             <div>
@@ -121,10 +123,13 @@ class Input extends Component {
                     ref={this.props._ref}
                     value={this.state.inputValue}
                 />
-                <div
-                    className={this.props.invalid && this.props.invalidFeedback !== '' ? 'invalid-feedback' : 'd-none'}>
-                    {this.props.invalidFeedback}
-                </div>
+                {this.props.feedbackText !== '' && (
+                    <div
+                        className={'invalid-feedback d-block text-' + this.props.state}>
+                        {this.props.feedbackText}
+                    </div>
+                )}
+
             </div>
         );
     }
