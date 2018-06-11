@@ -1,34 +1,61 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import InputSize from './InputSize';
+import { inputSizes } from './InputUtils';
 
 class Input extends Component {
 
     static defaultProps = {
         type: 'txt',
-        size: 'natural',
-        error: false,
-        success: false,
-        invalid: false,
+        size: 'default',
         disabled: false,
+        placeholder: '',
         onChange: () => {},
         onKeyDown: () => {},
         onKeyPress: () => {},
     };
 
     static propTypes = {
+        /**
+         * HTML ID of element
+         */
         id: PropTypes.string,
-        error: PropTypes.bool,
-        success: PropTypes.bool,
-        invalid: PropTypes.bool,
-        invalidFeedback: PropTypes.string,
+        /**
+         * Possible element states.
+         */
+        state: PropTypes.arrayOf(['error', 'warning', 'default', 'success']),
+        /**
+         * Appear when have some content.
+         * The color is changed based on selected state.
+         */
+        feedbackText: PropTypes.string,
         _ref: PropTypes.func,
+        /**
+         * Disable or enable the component.
+         */
         disabled: PropTypes.bool,
+        /**
+         * Element placeholder.
+         */
         placeholder: PropTypes.string,
+        /**
+         * Type of component.
+         */
         type: PropTypes.oneOf(['txt', 'number', 'email', 'password']),
-        size: PropTypes.oneOf(['small', 'natural', 'large', 'x-large']),
+        /**
+         * Available sizes of component.
+         */
+        size: PropTypes.oneOf(inputSizes),
+        /**
+         * Function that should be called when component is changed.
+         */
         onChange: PropTypes.func,
+        /**
+         * Function that should be called when a key is down.
+         */
         onKeyDown: PropTypes.func,
+        /**
+         * Function that should be called when a key is pressed.
+         */
         onKeyPress: PropTypes.func
     };
 
@@ -75,7 +102,7 @@ class Input extends Component {
      * @returns {XML}
      */
     render() {
-        let className = InputSize.size[this.props.size];
+        let className = inputSizes[this.props.size];
 
         this.props.invalid && (className += ' is-invalid');
         this.props.success && (className += ' state-valid');
