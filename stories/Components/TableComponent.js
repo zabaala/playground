@@ -17,7 +17,7 @@ const TableComponent = ({ propDefinitions }) => {
     );
 
     return (
-        <table className="table table-hover table-outline table-vcenter text-wrap card-table mt-3">
+        <table className="table table-hover table-outline table-vcenter text-wrap mt-3">
             <thead>
             <tr>
                 <th>name</th>
