@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import UiComponent from "../UiComponent";
 import PropTypes from 'prop-types';
 import {inputSizes, inputSizesClassed, inputTypes, inputStates} from './InputUtils';
 
-class Input extends Component {
+class Input extends UiComponent {
 
     static defaultProps = {
         type: 'text',
