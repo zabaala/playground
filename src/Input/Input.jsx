@@ -107,12 +107,22 @@ class Input extends UiComponent {
     render() {
         let className = inputSizesClassed[this.props.size];
 
-        this.props.state === 'error' && (className += ' is-invalid state-invalid');
-        this.props.state === 'success' && (className += ' is-valid state-valid');
+        this.props.state === 'error' && (className += ' is-invalid state-invalid bg-white');
+        this.props.state === 'success' && (className += ' is-valid state-valid bg-white');
+
+        let styles = {};
+
+        this.props.state === 'warning' && (
+            styles = {
+                borderColor: '#f1c40f',
+                boxShadow: '0 0 0 2px rgba(241, 196, 15, 0.25)',
+            }
+        );
 
         return (
             <div>
                 <input
+                    style={styles}
                     id={this.props.id}
                     type={this.props.type}
                     className={className}
