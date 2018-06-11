@@ -6,8 +6,8 @@ import TableComponent from './Components/TableComponent';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 import { withKnobs, text, boolean, number, select, button } from '@storybook/addon-knobs';
-import InputSize from '../resources/React/Components/Input/InputSize';
-import Input from '../resources/React/Components/Input/Input';
+import { inputSizes, inputTypes, inputStates } from '../src/Input/InputUtils';
+import Input from '../src/Input/Input';
 
 storiesOf('Input', module)
 
@@ -22,31 +22,21 @@ storiesOf('Input', module)
         })(() => {
 
             const disabled = boolean('Disabled', false);
-            const invalid = boolean('Invalid', false);
-            const success = boolean('Success', false);
-            const error = boolean('Error', false);
             const placeholder = text('Placeholder', '');
-            const size = select('Size', InputSize.size, 'natural');
-            const onChange = button('onChange', () => console.log('changed'));
-            const types = {
-                txt: 'txt',
-                number: 'number',
-                email: 'email',
-                password: 'password',
-            };
-
-            const type = select('Type', types, 'txt');
+            const feedbackText = text('Feedback Text', '');
+            const size = select('Size', inputSizes, 'normal');
+            const type = select('Type', inputTypes, 'text');
+            const state = select('State', inputStates, 'normal');
 
             return (
                 <Input
                     size={size}
                     type={type}
+                    state={state}
                     disabled={disabled}
-                    invalid={invalid}
-                    success={success}
-                    error={error}
                     placeholder={placeholder}
-                    onChange={onChange}
+                    feedbackText={feedbackText}
+                    onChange={action('Changed...')}
                 />
             );
         })
