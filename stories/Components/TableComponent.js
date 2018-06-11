@@ -6,19 +6,18 @@ const TableComponent = ({ propDefinitions }) => {
     const props = propDefinitions.map(
         ({ property, propType, required, description, defaultValue }) => (
             <tr key={property}>
-                <td>
-                    {property}
-                    {required ? <Red>*</Red> : null}<br/>
-                    {description}
+                <td wrap="">
+                    <code><strong>{property}{required ? <Red> *</Red> : null}</strong></code><br/>
+                    <span className="text-muted" style={{fontWeight: '500', fontSize: '12px'}}>{description}</span>
                 </td>
-                <td>{propType.name}</td>
-                <td>{JSON.stringify(defaultValue)}</td>
+                <td className="s-14">{propType.name}</td>
+                <td className="s-14">{JSON.stringify(defaultValue)}</td>
             </tr>
         )
     );
 
     return (
-        <table className="table table-hover table-outline table-vtop text-nowrap card-table">
+        <table className="table table-hover table-outline table-vcenter text-wrap card-table mt-3">
             <thead>
             <tr>
                 <th>name</th>
@@ -40,7 +39,7 @@ TableComponent.propTypes = {
         PropTypes.shape({
             property: PropTypes.string.isRequired,
             propType: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
-            required: PropTypes.bool.isRequired,
+            required: PropTypes.bool,
             description: PropTypes.string,
             defaultValue: PropTypes.any,
         })
