@@ -4,7 +4,6 @@ import { withInfo } from '@storybook/addon-info';
 import TableComponent from './Components/TableComponent';
 
 import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
 import { withKnobs, text, boolean, number, select, button } from '@storybook/addon-knobs';
 import { inputSizes, inputTypes, inputStates } from '../src/Input/InputUtils';
 import Input from '../src/Input/Input';
@@ -24,6 +23,7 @@ storiesOf('Input', module)
             const disabled = boolean('Disabled', false);
             const placeholder = text('Placeholder', '');
             const feedbackText = text('Feedback Text', '');
+            const onChangeText = text('onChange Text', 'Changed...');
             const size = select('Size', inputSizes, 'normal');
             const type = select('Type', inputTypes, 'text');
             const state = select('State', inputStates, 'normal');
@@ -36,7 +36,7 @@ storiesOf('Input', module)
                     disabled={disabled}
                     placeholder={placeholder}
                     feedbackText={feedbackText}
-                    onChange={action('Changed...')}
+                    onChange={action(onChangeText)}
                 />
             );
         })
