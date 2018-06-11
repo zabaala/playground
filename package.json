@@ -1,0 +1,40 @@
+{
+  "name": "playground",
+  "version": "0.1.0",
+  "description": "React playground storybook",
+  "main": "index.js",
+  "scripts": {
+    "dev": "start-storybook -p 6006",
+    "build": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zabaala/playground.git"
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "storyboard",
+    "tabler",
+    "bootstrap",
+    "ooppah"
+  ],
+  "author": "Mauricio Rodrigues",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zabaala/playground/issues"
+  },
+  "homepage": "https://github.com/zabaala/playground#readme",
+  "devDependencies": {
+    "@storybook/addon-info": "^3.4.7",
+    "@storybook/addon-knobs": "^3.4.7",
+    "@storybook/addon-options": "^3.4.7",
+    "@storybook/react": "^3.4.7",
+    "babel-core": "^6.26.3",
+    "prop-types": "^15.6.1"
+  },
+  "dependencies": {
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  }
+}
