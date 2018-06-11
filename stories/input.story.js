@@ -4,7 +4,7 @@ import { withInfo } from '@storybook/addon-info';
 import TableComponent from './Components/TableComponent';
 
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean, number, select, button } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 import { inputSizes, inputTypes, inputStates } from '../src/Input/InputUtils';
 import Input from '../src/Input/Input';
 
