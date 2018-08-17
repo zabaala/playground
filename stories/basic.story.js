@@ -3,8 +3,10 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import TableComponent from './Components/TableComponent';
 
-import { withKnobs, text, select } from '@storybook/addon-knobs';
+import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
 import StoryBody from './Components/StoryBody';
+import Alert from '../src/Alert';
+import { types as alertTypes } from "../src/Alert";
 import Separator from '../src/Separator';
 import Text from '../src/Text';
 import {sizes as titleSizes} from '../src/Title';
@@ -14,6 +16,24 @@ storiesOf('Basic', module)
 
     .addDecorator(story => (<div className="m-6">{story()}</div>))
     .addDecorator(withKnobs)
+    .add(
+        'Alert',
+        withInfo({
+            inline: true,
+            header: true,
+            TableComponent
+        })(() => {
+            const dismissible = boolean('Dismissible', true);
+            const type = select('Type', alertTypes, 'info');
+            const _text = text('Text', 'A alert text here...');
+
+            return (
+                <StoryBody>
+                    <Alert dismissible={dismissible} type={type}>{_text}</Alert>
+                </StoryBody>
+            );
+        })
+    )
     .add(
         'Separator',
         withInfo({
