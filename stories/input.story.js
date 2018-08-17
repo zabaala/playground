@@ -10,13 +10,13 @@ import Input from '../src/Input/Input';
 
 storiesOf('Input', module)
 
-    .addDecorator(story => (<div className="m-5">{story()}</div>))
+    .addDecorator(story => (<div className="m-6">{story()}</div>))
     .addDecorator(withKnobs)
     .add(
         'Standard',
         withInfo({
             inline: true,
-            header: false,
+            header: true,
             TableComponent
         })(() => {
 
@@ -30,8 +30,6 @@ storiesOf('Input', module)
 
             return (
                 <div>
-                    <h1 className="display-4">Input > Standard</h1>
-                    <hr className="m-0 mb-5 separator"/>
                     <p>Try it:</p>
                     <Input
                         size={size}
