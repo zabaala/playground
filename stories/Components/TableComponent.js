@@ -16,7 +16,7 @@ const TableComponent = ({ propDefinitions }) => {
         )
     );
 
-    return (
+    const table = (
         <table className="table table-hover table-outline table-vcenter text-wrap mt-3">
             <thead>
             <tr>
@@ -28,6 +28,12 @@ const TableComponent = ({ propDefinitions }) => {
             <tbody>{props}</tbody>
         </table>
     );
+
+    if (props.length > 0) {
+        return table;
+    }
+
+    return null;
 };
 
 TableComponent.defaultProps = {
