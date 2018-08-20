@@ -8,6 +8,9 @@ import StoryBody from './Components/StoryBody';
 import Alert from '../src/Alert';
 import { types as alertTypes } from "../src/Alert";
 
+import Color from '../src/Color';
+import { colors as colorsOfColor } from "../src/Color"
+
 import Icon from '../src/Icon';
 
 import Link from '../src/Link';
@@ -15,7 +18,7 @@ import { targetList } from "../src/Link"
 
 import Separator from '../src/Separator';
 import Size from '../src/Size';
-import {sizes as sizesSizes } from "../src/Size"
+import {sizes as sizesOfSize } from "../src/Size"
 
 import Text from '../src/Text';
 import {sizes as titleSizes} from '../src/Title';
@@ -45,6 +48,29 @@ storiesOf('Basic', module)
                             <Text key={3}> text...</Text>
                         ]}
                     </Alert>
+                </StoryBody>
+            );
+        })
+    )
+    .add(
+        'Color',
+        withInfo({
+            inline: true,
+            header: true,
+            TableComponent
+        })(() => {
+
+            const color = select('Color', colorsOfColor, 'dark');
+
+            return (
+                <StoryBody>
+                    <Color color={color}>
+                        <Text>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, at beatae blanditiis commodi
+                            dolorum facere harum itaque, labore laboriosam nobis obcaecati velit! Adipisci, dolore
+                            dolorum laudantium nisi quo repellendus soluta?
+                        </Text>
+                    </Color>
                 </StoryBody>
             );
         })
@@ -110,7 +136,7 @@ storiesOf('Basic', module)
             TableComponent
         })(() => {
 
-            const size = select('Size', sizesSizes, '14');
+            const size = select('Size', sizesOfSize, '14');
 
             return (
                 <StoryBody>
