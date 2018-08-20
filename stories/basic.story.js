@@ -2,11 +2,13 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import TableComponent from './Components/TableComponent';
-import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
+import { withKnobs, text, select, boolean, number } from '@storybook/addon-knobs';
 import StoryBody from './Components/StoryBody';
 
 import Alert from '../src/Alert';
 import { types as alertTypes } from "../src/Alert";
+
+import Icon from '../src/Icon';
 
 import Link from '../src/Link';
 import { targetList } from "../src/Link"
@@ -40,6 +42,22 @@ storiesOf('Basic', module)
                             <Text key={3}> text...</Text>
                         ]}
                     </Alert>
+                </StoryBody>
+            );
+        })
+    )
+    .add(
+        'Icon',
+        withInfo({
+            inline: true,
+            header: true,
+            TableComponent
+        })(() => {
+            const name = text('Name', 'heart');
+
+            return (
+                <StoryBody>
+                    <Icon name={name} />
                 </StoryBody>
             );
         })
