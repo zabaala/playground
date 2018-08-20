@@ -60,7 +60,9 @@ storiesOf('Basic', module)
 
             return (
                 <StoryBody>
-                    <Icon name={name} />
+                    <Size size="72">
+                        <Icon name={name} />
+                    </Size>
                 </StoryBody>
             );
         })
@@ -108,12 +110,16 @@ storiesOf('Basic', module)
             TableComponent
         })(() => {
 
-            const size = select('Size', sizesSizes, '72');
+            const size = select('Size', sizesSizes, '14');
 
             return (
                 <StoryBody>
                     <Size size={size}>
-                        <Icon name="heart" />
+                        <Text>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt ducimus eaque eius fugit
+                            impedit in, itaque laborum molestiae nostrum praesentium quibusdam reiciendis temporibus
+                            tenetur! Cumque ex quae quos repudiandae veritatis?
+                        </Text>
                     </Size>
                 </StoryBody>
             );
