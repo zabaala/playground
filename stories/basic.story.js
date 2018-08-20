@@ -14,6 +14,9 @@ import Link from '../src/Link';
 import { targetList } from "../src/Link"
 
 import Separator from '../src/Separator';
+import Size from '../src/Size';
+import {sizes as sizesSizes } from "../src/Size"
+
 import Text from '../src/Text';
 import {sizes as titleSizes} from '../src/Title';
 import Title from '../src/Title';
@@ -93,6 +96,25 @@ storiesOf('Basic', module)
             return (
                 <StoryBody>
                     <Separator className={className}/>
+                </StoryBody>
+            );
+        })
+    )
+    .add(
+        'Size',
+        withInfo({
+            inline: true,
+            header: true,
+            TableComponent
+        })(() => {
+
+            const size = select('Size', sizesSizes, '72');
+
+            return (
+                <StoryBody>
+                    <Size size={size}>
+                        <Icon name="heart" />
+                    </Size>
                 </StoryBody>
             );
         })
