@@ -8,7 +8,11 @@ const TableComponent = ({ propDefinitions }) => {
             <tr key={property}>
                 <td wrap="">
                     <code><strong>{property}{required ? <Red> *</Red> : null}</strong></code><br/>
-                    <span className="text-muted" style={{fontWeight: '500', fontSize: '12px'}}>{description}</span>
+                    <span
+                        className="text-muted"
+                        style={{fontWeight: '500', fontSize: '12px'}}
+                        dangerouslySetInnerHTML={{__html: description.replace(/(?:\r\n|\r|\n)/g, '<br/>')}}>
+                    </span>
                 </td>
                 <td className="s-14">{propType.name}</td>
                 <td className="s-14">{JSON.stringify(defaultValue)}</td>

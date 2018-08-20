@@ -8,6 +8,11 @@ import StoryBody from './Components/StoryBody';
 import Alert from '../src/Alert';
 import { types as alertTypes } from "../src/Alert";
 
+import Container from '../src/Container';
+import Row from '../src/Row';
+import Col from '../src/Col';
+import { colWidths } from "../src/Col"
+
 import Color from '../src/Color';
 import { colors as colorsOfColor } from "../src/Color"
 
@@ -71,6 +76,57 @@ storiesOf('Basic', module)
                             dolorum laudantium nisi quo repellendus soluta?
                         </Text>
                     </Color>
+                </StoryBody>
+            );
+        })
+    )
+    .add(
+        'Layout',
+        withInfo({
+            inline: true,
+            header: true,
+            TableComponent
+        })(() => {
+
+            const containerFluid = boolean('Container fluid', false);
+            const rowNoGutters = boolean('Row no-gutters', false);
+
+            return (
+                <StoryBody>
+                    <Container fluid={containerFluid}>
+                        <Row className="mb-2" noGutters={rowNoGutters}>
+                            <Col md={{size: 4, order: 2, offset: 2}} className="bg-blue-light border p-4 ">
+                                <Color color="white">col-md-4 order-md-2 offset-md-2</Color>
+                            </Col>
+                            <Col md={{size: 6, order: 1}} className="bg-blue-light border p-4">
+                                <Color color="white">col-md-6 order-md-1</Color>
+                            </Col>
+                        </Row>
+
+                        <Row className="mb-2" noGutters={rowNoGutters}>
+                            <Col lg="3" md="3" sm="6" xs="6" className="bg-blue-light border p-4">
+                                <Color color="white">col 1</Color>
+                            </Col>
+                            <Col lg="3" md="3" sm="6" xs="6" className="bg-blue-light border p-4">
+                                <Color color="white">col 2</Color>
+                            </Col>
+                            <Col lg="3" md="3" sm="6" xs="6" className="bg-blue-light border p-4">
+                                <Color color="white">col 3</Color>
+                            </Col>
+                            <Col lg="3" md="3" sm="6" xs="6" className="bg-blue-light border p-4">
+                                <Color color="white">col 4</Color>
+                            </Col>
+                        </Row>
+
+                        <Row className="mb-2" noGutters={rowNoGutters}>
+                            <Col sm={{size: 'auto', offset: 2}} className="bg-blue-light border p-4">
+                                <Color color="white">col-sm offset-sm-2</Color>
+                            </Col>
+                            <Col sm={{size: 'auto', offset: 2}} className="bg-blue-light border p-4">
+                                <Color color="white">col-sm offset-sm-2</Color>
+                            </Col>
+                        </Row>
+                    </Container>
                 </StoryBody>
             );
         })
