@@ -11,7 +11,7 @@ const propTypes = {
     /**
      * Size of element.
      */
-    size: PropTypes.oneOfType(sizes)
+    size: PropTypes.oneOf(sizes)
 };
 
 const defaultProps = {
