@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "start-storybook -p 6006",
-    "build": "build-storybook && rm -Rf docs && mv ./storybook-static docs && git add docs && git commit -m 'docs updated' && git push origin master && push github master"
+    "build": "build-storybook && rm -Rf docs && mv ./storybook-static docs && git add docs && git commit -m 'update(documentation)' && git push origin master && git push github master"
   },
   "repository": {
     "type": "git",
