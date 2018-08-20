@@ -39,7 +39,7 @@ const Alert = (props) => {
     const cssClass = `alert ${alertClass} ${dismissibleClass} ${className}`;
 
     return (
-        <div className={cssClass} {...attributes}>
+        <div className={cssClass} {...attributes} role="alert">
             {dismissible && <button type="button" className="close" data-dismiss="alert" />}
             {children}
         </div>
