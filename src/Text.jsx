@@ -21,9 +21,7 @@ const Text = (props) => {
     const Tag = `span`;
 
     return (
-        <div>
-            <Tag className={className} {...attributes}>{children}</Tag>
-        </div>
+        <Tag className={className} {...attributes}>{children}</Tag>
     );
 };
 
