@@ -2,16 +2,19 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import TableComponent from './Components/TableComponent';
-
 import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
 import StoryBody from './Components/StoryBody';
+
 import Alert from '../src/Alert';
 import { types as alertTypes } from "../src/Alert";
+
+import Link from '../src/Link';
+import { targetList } from "../src/Link"
+
 import Separator from '../src/Separator';
 import Text from '../src/Text';
 import {sizes as titleSizes} from '../src/Title';
 import Title from '../src/Title';
-import Link from '../src/Link';
 
 storiesOf('Basic', module)
 
@@ -37,6 +40,24 @@ storiesOf('Basic', module)
                             <Text key={3}> text...</Text>
                         ]}
                     </Alert>
+                </StoryBody>
+            );
+        })
+    )
+    .add(
+        'Link',
+        withInfo({
+            inline: true,
+            header: true,
+            TableComponent
+        })(() => {
+            const href = text('href', 'https://www.google.com');
+            const target = select('Target', targetList, '_parent');
+            const _text = text('Text', 'a text link');
+
+            return (
+                <StoryBody>
+                    <Link href={href} target={target}>{_text}</Link>
                 </StoryBody>
             );
         })
@@ -88,7 +109,7 @@ storiesOf('Basic', module)
             TableComponent
         })(() => {
             const _text = text('Text', 'A title text here...');
-            const size = select('Size', titleSizes, 1);
+            const size = select('Size', titleSizes, '1');
 
             return (
                 <StoryBody>

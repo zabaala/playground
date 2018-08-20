@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const sizes = [1, 2, 3, 4, 5, 6];
+export const sizes = ['1', '2', '3', '4', '5', '6'];
 
 const propTypes = {
     /**

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const targetList = ['_blank', '_self', '_parent', '_new', 'warning', 'danger'];
+export const targetList = ['_blank', '_self', '_parent', '_new'];
 
 const propTypes = {
     /**
