@@ -12,6 +12,7 @@ import Avatar, {colors as colorsOfAvatar, sizes as sizesOfAvatar, statusList as 
 import Alert from '../src/Alert';
 import { types as alertTypes } from "../src/Alert";
 
+import Card from '../src/Card';
 import Container from '../src/Container';
 import Row from '../src/Row';
 import Col, { colWidths } from '../src/Col';
@@ -126,6 +127,41 @@ storiesOf('Basic', module)
                         <Avatar size={avatarSizes} src="https://tabler.github.io/tabler/demo/faces/female/25.jpg">LM</Avatar>
                         <Avatar size={avatarSizes}>+8</Avatar>
                     </AvatarList>
+                </StoryBody>
+            );
+        })
+    )
+    .add(
+        'Card',
+        withInfo({
+            inline: true,
+            header: true,
+            TableComponent
+        })(() => {
+            return (
+                <StoryBody>
+                    <Card>
+                        <Card.Header>Foo</Card.Header>
+                        <Card.Body>
+                            <Text>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Aperiam commodi cupiditate dolorum eligendi fugit in incidunt
+                                modi necessitatibus optio possimus provident ratione recusandae
+                                repellat saepe tempora, temporibus veniam. Itaque, tempore.
+                            </Text>
+                        </Card.Body>
+                        <Card.Body>
+                            <Text>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Aperiam commodi cupiditate dolorum eligendi fugit in incidunt
+                                modi necessitatibus optio possimus provident ratione recusandae
+                                repellat saepe tempora, temporibus veniam. Itaque, tempore.
+                            </Text>
+                        </Card.Body>
+                        <Card.Footer>
+                            footer
+                        </Card.Footer>
+                    </Card>
                 </StoryBody>
             );
         })
