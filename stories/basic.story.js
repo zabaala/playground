@@ -141,7 +141,10 @@ storiesOf('Basic', module)
             return (
                 <StoryBody>
                     <Card>
-                        <Card.Header>Foo</Card.Header>
+                        <Card.Header>
+                            <Card.Header.Title>Card Title</Card.Header.Title>
+                            <Card.Header.Options>some options...</Card.Header.Options>
+                        </Card.Header>
                         <Card.Body>
                             <Text>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
