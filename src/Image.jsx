@@ -24,16 +24,16 @@ const propTypes = {
     /**
      * Function that will be called when image fully loaded.
      */
-    onLoaded: PropTypes.func,
+    onLoad: PropTypes.func,
     /**
-     * Function that will be called when image is not loaded.
+     * Function that will be called when a load image error occur.
      */
-    onUnloaded: PropTypes.func,
+    onError: PropTypes.func,
 };
 
 const defaultProps = {
-    onLoaded: () => {},
-    onUnloaded: () => {}
+    onLoad: () => {},
+    onError: () => {}
 };
 
 class Image extends React.Component {
@@ -46,8 +46,8 @@ class Image extends React.Component {
             error: false
         };
 
-        // this.handleOnloaded = this.handleOnloaded.bind(this);
-        // this.handleOnunloaded = this.handleOnunloaded.bind(this);
+        this.handleOnLoaded = this.handleOnLoaded.bind(this);
+        this.handleOnError= this.handleOnError.bind(this);
     }
 
     componentDidMount = () => {
@@ -60,12 +60,12 @@ class Image extends React.Component {
         }
     };
 
-    handleOnloaded = (e) => {
-        this.props.onLoaded(e);
+    handleOnLoaded = (e) => {
+        this.props.onLoad(e);
     };
 
-    handleOnunloaded = (e) => {
-        this.props.onUnloaded(e);
+    handleOnError= (e) => {
+        this.props.onError(e);
     };
 
     /**
@@ -80,6 +80,7 @@ class Image extends React.Component {
             });
 
             if (! response.ok) {
+                this.handleOnError();
                 throw Error(response.statusText);
             }
 
@@ -92,13 +93,11 @@ class Image extends React.Component {
                 });
             });
         })
-        .then(() => this.handleOnloaded())
         .catch(error => {
             this.setState({
                 src: null,
                 error: true
             });
-            this.handleOnunloaded();
         });
     };
 
@@ -116,16 +115,26 @@ class Image extends React.Component {
     };
 
     render() {
+        const {
+            onLoad,
+            onError,
+            src,
+            ...others
+        } = this.props;
+
         if (this.state.src === null && this.state.error === false) {
             return <ActivityIndicator width={30} height={30} />
         }
 
-        const {onLoaded, onUnloaded, ...others} = this.props;
-
         if (this.state.src !== null && this.state.error === false) {
-            return <img {...others} />;
+            return <img {...others}
+                src={this.state.src}
+                onLoad={e => this.handleOnLoaded(e)}
+            />;
         }
 
+        // @todo: The user can define a component to be returned, if any error occur...
+        // Maybe: create a Empty component.
         if (this.state.error === true) {
             return '';
         }

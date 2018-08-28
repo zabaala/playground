@@ -159,13 +159,20 @@ storiesOf('Basic', module)
         })(() => {
             const imageSrc = text('Src', 'https://scontent.ffor10-1.fna.fbcdn.net/v/t1.0-1/p160x160/33204808_10209559206337566_1074408325614927872_n.jpg?_nc_cat=0&oh=8789984bad8adc7a0031a6cec3275ff3&oe=5C3B29CC');
 
+            const onLoad = () => {
+                console.log('Yeah, loaded!');
+            };
+
+            const onError = () => {
+                console.error('Ops... something is wrong!');
+            };
+
             return (
                 <StoryBody>
                     <Image
                         src={imageSrc}
-                        onLoaded={console.log('image loaded...')}
-                        onUnloaded={console.error('Ops... image unloaded!')}
-
+                        onLoad={onLoad}
+                        onError={onError}
                     />
                 </StoryBody>
             );
