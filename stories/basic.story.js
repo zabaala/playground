@@ -5,30 +5,23 @@ import TableComponent from './Components/TableComponent';
 import { withKnobs, text, select, boolean, number } from '@storybook/addon-knobs';
 import StoryBody from './Components/StoryBody';
 
+import AvatarList from '../src/AvatarList';
+import Avatar, {colors as colorsOfAvatar, sizes as sizesOfAvatar, statusList as statusOfAvatar} from '../src/Avatar';
+
 import Alert from '../src/Alert';
 import { types as alertTypes } from "../src/Alert";
 
 import Container from '../src/Container';
 import Row from '../src/Row';
-import Col from '../src/Col';
-import { colWidths } from "../src/Col"
-
-import Color from '../src/Color';
-import { colors as colorsOfColor } from "../src/Color"
-
+import Col, { colWidths } from '../src/Col';
+import Color, { colors as colorsOfColor } from '../src/Color';
 import Icon from '../src/Icon';
 import Image from '../src/Image';
-
-import Link from '../src/Link';
-import { targetList } from "../src/Link"
-
+import Link, { targetList } from '../src/Link';
 import Separator from '../src/Separator';
-import Size from '../src/Size';
-import {sizes as sizesOfSize } from "../src/Size"
-
+import Size, {sizes as sizesOfSize } from '../src/Size';
 import Text from '../src/Text';
-import {sizes as titleSizes} from '../src/Title';
-import Title from '../src/Title';
+import Title, {sizes as titleSizes} from '../src/Title';
 
 storiesOf('Basic', module)
 
@@ -54,6 +47,66 @@ storiesOf('Basic', module)
                             <Text key={3}> text...</Text>
                         ]}
                     </Alert>
+                </StoryBody>
+            );
+        })
+    )
+    .add(
+        'Avatar',
+        withInfo({
+            inline: true,
+            header: true,
+            TableComponent
+        })(() => {
+            const initials = boolean('Initials', true);
+            const imageAvatar = boolean('With Image', false);
+            const color = select('Color', ['', ...colorsOfAvatar], 'green');
+            const size = select('Size', sizesOfAvatar, 'xxl');
+            const status = select('Status', statusOfAvatar, 'green');
+            const avatarSrc = text('Src', 'https://scontent.ffor10-1.fna.fbcdn.net/v/t1.0-1/p160x160/33204808_10209559206337566_1074408325614927872_n.jpg?_nc_cat=0&oh=8789984bad8adc7a0031a6cec3275ff3&oe=5C3B29CC');
+            return (
+                <StoryBody>
+                    <Avatar
+                        size={size}
+                        color={color}
+                        status={status}
+                        src={imageAvatar && avatarSrc}>
+                        {initials ? 'MR' : <Icon name="heart" /> }
+                    </Avatar>
+                </StoryBody>
+            );
+        })
+    )
+    .add(
+        'Avatar List',
+        withInfo({
+            inline: true,
+            header: true,
+            TableComponent
+        })(() => {
+            const stacked = boolean('Stacked', false);
+            const avatarSizes = select('Size', sizesOfAvatar, 'lg');
+            return (
+                <StoryBody>
+                    <AvatarList stacked={stacked} className="d-block mb-4">
+                        <Avatar size={avatarSizes} color="blue">AB</Avatar>
+                        <Avatar size={avatarSizes} color="azure">CD</Avatar>
+                        <Avatar size={avatarSizes} color="indigo">EF</Avatar>
+                        <Avatar size={avatarSizes} color="purple">GH</Avatar>
+                        <Avatar size={avatarSizes} color="pink">IJ</Avatar>
+                        <Avatar size={avatarSizes} color="cyan">LM</Avatar>
+                        <Avatar size={avatarSizes}>+8</Avatar>
+                    </AvatarList>
+
+                    <AvatarList stacked={stacked} className="d-block mb-4">
+                        <Avatar size={avatarSizes} src="https://tabler.github.io/tabler/demo/faces/female/12.jpg">AB</Avatar>
+                        <Avatar size={avatarSizes} src="https://tabler.github.io/tabler/demo/faces/female/21.jpg">CD</Avatar>
+                        <Avatar size={avatarSizes} src="https://tabler.github.io/tabler/demo/faces/female/22.jpg">EF</Avatar>
+                        <Avatar size={avatarSizes} src="https://tabler.github.io/tabler/demo/faces/female/23.jpg">GH</Avatar>
+                        <Avatar size={avatarSizes} src="https://tabler.github.io/tabler/demo/faces/female/24.jpg">IJ</Avatar>
+                        <Avatar size={avatarSizes} src="https://tabler.github.io/tabler/demo/faces/female/25.jpg">LM</Avatar>
+                        <Avatar size={avatarSizes}>+8</Avatar>
+                    </AvatarList>
                 </StoryBody>
             );
         })
