@@ -11,7 +11,11 @@ const propTypes = {
     /**
      * Size of element.
      */
-    size: PropTypes.oneOf(sizes)
+    size: PropTypes.oneOfType([
+        PropTypes.oneOf(sizes),
+        PropTypes.string,
+        PropTypes.number
+    ])
 };
 
 const defaultProps = {
