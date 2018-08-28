@@ -17,6 +17,7 @@ import Color from '../src/Color';
 import { colors as colorsOfColor } from "../src/Color"
 
 import Icon from '../src/Icon';
+import Image from '../src/Image';
 
 import Link from '../src/Link';
 import { targetList } from "../src/Link"
@@ -145,6 +146,27 @@ storiesOf('Basic', module)
                     <Size size="72">
                         <Icon name={name} />
                     </Size>
+                </StoryBody>
+            );
+        })
+    )
+    .add(
+        'Image',
+        withInfo({
+            inline: true,
+            header: true,
+            TableComponent
+        })(() => {
+            const imageSrc = text('Src', 'https://scontent.ffor10-1.fna.fbcdn.net/v/t1.0-1/p160x160/33204808_10209559206337566_1074408325614927872_n.jpg?_nc_cat=0&oh=8789984bad8adc7a0031a6cec3275ff3&oe=5C3B29CC');
+
+            return (
+                <StoryBody>
+                    <Image
+                        src={imageSrc}
+                        onLoaded={console.log('image loaded...')}
+                        onUnloaded={console.error('Ops... image unloaded!')}
+
+                    />
                 </StoryBody>
             );
         })

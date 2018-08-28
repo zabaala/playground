@@ -37,6 +37,8 @@
     "classnames": "^2.2.6",
     "lodash.isobject": "^3.0.2",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0"
+    "react-dom": "^16.4.0",
+    "react-image": "^1.4.1",
+    "react-svg-loader": "^2.1.0"
   }
 }
