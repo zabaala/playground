@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import CardTitle from '../src/CardTitle';
+import CardOptions from '../src/CardOptions';
 
 const propTypes = {
 };
@@ -25,5 +27,7 @@ const CardHeader = (props) => {
 
 CardHeader.propTypes = propTypes;
 CardHeader.defaultProps = defaultProps;
+CardHeader.Title = CardTitle;
+CardHeader.Options = CardOptions;
 
 export default CardHeader;
