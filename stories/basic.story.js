@@ -5,6 +5,7 @@ import TableComponent from './Components/TableComponent';
 import { withKnobs, text, select, boolean, number } from '@storybook/addon-knobs';
 import StoryBody from './Components/StoryBody';
 
+import ActivityIndicator from '../src/ActivityIndicator';
 import AvatarList from '../src/AvatarList';
 import Avatar, {colors as colorsOfAvatar, sizes as sizesOfAvatar, statusList as statusOfAvatar} from '../src/Avatar';
 
@@ -27,6 +28,24 @@ storiesOf('Basic', module)
 
     .addDecorator(story => (<div className="m-6">{story()}</div>))
     .addDecorator(withKnobs)
+    .add(
+        'Activity Indicator',
+        withInfo({
+            inline: true,
+            header: true,
+            TableComponent
+        })(() => {
+            return (
+                <StoryBody>
+                    <ActivityIndicator width={30} height={30} />
+                    <ActivityIndicator width={60} height={60} />
+                    <ActivityIndicator width={100} height={100} />
+                    <ActivityIndicator width={150} height={150} />
+                    <ActivityIndicator width={200} height={200} />
+                </StoryBody>
+            );
+        })
+    )
     .add(
         'Alert',
         withInfo({
@@ -135,6 +154,52 @@ storiesOf('Basic', module)
         })
     )
     .add(
+        'Icon',
+        withInfo({
+            inline: true,
+            header: true,
+            TableComponent
+        })(() => {
+            const name = text('Name', 'heart');
+
+            return (
+                <StoryBody>
+                    <Size size="72">
+                        <Icon name={name} />
+                    </Size>
+                </StoryBody>
+            );
+        })
+    )
+    .add(
+        'Image',
+        withInfo({
+            inline: true,
+            header: true,
+            TableComponent
+        })(() => {
+            const imageSrc = text('Src', 'https://scontent.ffor10-1.fna.fbcdn.net/v/t1.0-1/p160x160/33204808_10209559206337566_1074408325614927872_n.jpg?_nc_cat=0&oh=8789984bad8adc7a0031a6cec3275ff3&oe=5C3B29CC');
+
+            const onLoad = () => {
+                console.log('Yeah, loaded!');
+            };
+
+            const onError = () => {
+                console.error('Ops... something is wrong!');
+            };
+
+            return (
+                <StoryBody>
+                    <Image
+                        src={imageSrc}
+                        onLoad={onLoad}
+                        onError={onError}
+                    />
+                </StoryBody>
+            );
+        })
+    )
+    .add(
         'Layout',
         withInfo({
             inline: true,
@@ -181,52 +246,6 @@ storiesOf('Basic', module)
                             </Col>
                         </Row>
                     </Container>
-                </StoryBody>
-            );
-        })
-    )
-    .add(
-        'Icon',
-        withInfo({
-            inline: true,
-            header: true,
-            TableComponent
-        })(() => {
-            const name = text('Name', 'heart');
-
-            return (
-                <StoryBody>
-                    <Size size="72">
-                        <Icon name={name} />
-                    </Size>
-                </StoryBody>
-            );
-        })
-    )
-    .add(
-        'Image',
-        withInfo({
-            inline: true,
-            header: true,
-            TableComponent
-        })(() => {
-            const imageSrc = text('Src', 'https://scontent.ffor10-1.fna.fbcdn.net/v/t1.0-1/p160x160/33204808_10209559206337566_1074408325614927872_n.jpg?_nc_cat=0&oh=8789984bad8adc7a0031a6cec3275ff3&oe=5C3B29CC');
-
-            const onLoad = () => {
-                console.log('Yeah, loaded!');
-            };
-
-            const onError = () => {
-                console.error('Ops... something is wrong!');
-            };
-
-            return (
-                <StoryBody>
-                    <Image
-                        src={imageSrc}
-                        onLoad={onLoad}
-                        onError={onError}
-                    />
                 </StoryBody>
             );
         })
