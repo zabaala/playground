@@ -143,7 +143,10 @@ storiesOf('Basic', module)
                     <Card>
                         <Card.Header>
                             <Card.Header.Title>Card Title</Card.Header.Title>
-                            <Card.Header.Options>some options...</Card.Header.Options>
+                            <Card.Header.Options>
+                                <Link><Icon name="edit"/></Link>
+                                <Link><Icon name="trash"/></Link>
+                            </Card.Header.Options>
                         </Card.Header>
                         <Card.Body>
                             <Text>
@@ -162,7 +165,7 @@ storiesOf('Basic', module)
                             </Text>
                         </Card.Body>
                         <Card.Footer>
-                            footer
+                            a footer content here...
                         </Card.Footer>
                     </Card>
                 </StoryBody>
