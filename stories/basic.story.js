@@ -21,6 +21,8 @@ import Color, { colors as colorsOfColor } from '../src/Color';
 import Icon from '../src/Icon';
 import Image from '../src/Image';
 import Link, { targetList } from '../src/Link';
+import Nav, { alignments as alignmentsOfNav } from '../src/Nav';
+import NavItem from '../src/NavItem';
 import Separator from '../src/Separator';
 import Size, {sizes as sizesOfSize } from '../src/Size';
 import Text from '../src/Text';
@@ -31,7 +33,7 @@ storiesOf('Basic', module)
     .addDecorator(story => (<div className="m-6">{story()}</div>))
     .addDecorator(withKnobs)
     .add(
-        'Activity Indicator',
+        'ActivityIndicator',
         withInfo({
             inline: true,
             header: true,
@@ -129,7 +131,7 @@ storiesOf('Basic', module)
         })
     )
     .add(
-        'Avatar List',
+        'AvatarList',
         withInfo({
             inline: true,
             header: true,
@@ -337,6 +339,29 @@ storiesOf('Basic', module)
             return (
                 <StoryBody>
                     <Link href={href} target={target}>{_text}</Link>
+                </StoryBody>
+            );
+        })
+    )
+    .add(
+        'Nav',
+        withInfo({
+            inline: true,
+            header: true,
+            TableComponent
+        })(() => {
+            const navActiveItem = boolean('Simulate active', false);
+            const navAlignment = select('Nav Align', alignmentsOfNav, 'left');
+            return (
+                <StoryBody>
+                    <Nav align={navAlignment}>
+                        <NavItem icon="home" active={navActiveItem}>Dashboard</NavItem>
+                        <NavItem icon="package">Plans</NavItem>
+                        <NavItem icon="tag">Coupons</NavItem>
+                        <NavItem icon="award">Subscriptions</NavItem>
+                        <NavItem icon="pie-chart">Report</NavItem>
+                        <NavItem icon="settings">Settings</NavItem>
+                    </Nav>
                 </StoryBody>
             );
         })
