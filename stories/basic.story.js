@@ -22,7 +22,7 @@ import Icon from '../src/Icon';
 import Image from '../src/Image';
 import Link, { targetList } from '../src/Link';
 import Nav, { alignments as alignmentsOfNav } from '../src/Nav';
-import NavItem from '../src/NavItem';
+import NavItem, { targetList as targetListOfNavItem } from '../src/NavItem';
 import Separator from '../src/Separator';
 import Size, {sizes as sizesOfSize } from '../src/Size';
 import Text from '../src/Text';
@@ -352,15 +352,18 @@ storiesOf('Basic', module)
         })(() => {
             const navActiveItem = boolean('Simulate active', false);
             const navAlignment = select('Nav Align', alignmentsOfNav, 'left');
+            const navItemHref = text('Link', 'https://github.com/zabaala/playground');
+            const navItemTarget = select('Target', targetListOfNavItem, '_blank');
+
             return (
                 <StoryBody>
                     <Nav align={navAlignment}>
-                        <NavItem icon="home" active={navActiveItem}>Dashboard</NavItem>
-                        <NavItem icon="package">Plans</NavItem>
-                        <NavItem icon="tag">Coupons</NavItem>
-                        <NavItem icon="award">Subscriptions</NavItem>
-                        <NavItem icon="pie-chart">Report</NavItem>
-                        <NavItem icon="settings">Settings</NavItem>
+                        <NavItem href={navItemHref} icon="home" active={navActiveItem}>Dashboard</NavItem>
+                        <NavItem href={navItemHref} target={navItemTarget} icon="package">Plans</NavItem>
+                        <NavItem href={navItemHref} target={navItemTarget} icon="tag">Coupons</NavItem>
+                        <NavItem href={navItemHref} target={navItemTarget} icon="award">Subscriptions</NavItem>
+                        <NavItem href={navItemHref} target={navItemTarget} icon="pie-chart">Report</NavItem>
+                        <NavItem href={navItemHref} target={navItemTarget} icon="settings">Settings</NavItem>
                     </Nav>
                 </StoryBody>
             );

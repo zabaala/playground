@@ -1,28 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Link from './Link';
+import Link, { targetList as targetListOfLink } from './Link';
 import Icon from './Icon';
+
+export const targetList = targetListOfLink;
 
 const propTypes = {
     active: PropTypes.bool,
     icon: PropTypes.oneOfType([
         PropTypes.bool,
         PropTypes.string
-    ])
+    ]),
+    href: PropTypes.string,
+    target: PropTypes.oneOf(targetList)
 };
 const defaultProps = {
     active: false,
-    icon: false
+    icon: false,
+    target: '_parent'
 };
 
-const Nav = (props) => {
+const NavItem = (props) => {
 
     const {
         className,
         children,
         active,
         icon,
+        href,
+        target,
         ...attributes
     } = props;
 
@@ -37,7 +44,7 @@ const Nav = (props) => {
 
     return (
         <li className={__className} {...attributes}>
-            <Link className="nav-link" style={__activeStyle}>
+            <Link href={href} target={target} className="nav-link" style={__activeStyle} >
                 { icon && <Icon name={icon} /> }
                 {children}
             </Link>
@@ -45,7 +52,7 @@ const Nav = (props) => {
     );
 };
 
-Nav.propTypes = propTypes;
-Nav.defaultProps = defaultProps;
+NavItem.propTypes = propTypes;
+NavItem.defaultProps = defaultProps;
 
-export default Nav;
+export default NavItem;
