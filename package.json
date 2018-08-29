@@ -1,7 +1,7 @@
 {
-  "name": "playground",
+  "name": "playground-dls",
   "version": "0.1.0",
-  "description": "React playground storybook",
+  "description": "A Design Language System created with React based on Tabler Framework",
   "main": "index.js",
   "scripts": {
     "dev": "start-storybook -p 6006",
