@@ -12,12 +12,11 @@
     "url": "git+https://github.com/zabaala/playground.git"
   },
   "keywords": [
-    "react",
+    "design language system",
     "ui",
-    "storyboard",
+    "dls",
     "tabler",
-    "bootstrap",
-    "ooppah"
+    "bootstrap"
   ],
   "author": "Mauricio Rodrigues",
   "license": "MIT",
