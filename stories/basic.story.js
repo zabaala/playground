@@ -6,6 +6,7 @@ import { withKnobs, text, select, boolean, number } from '@storybook/addon-knobs
 import StoryBody from './Components/StoryBody';
 
 import ActivityIndicator from '../src/ActivityIndicator';
+import Align, { alignments as alignmentsOfAlign } from '../src/Align';
 import AvatarList from '../src/AvatarList';
 import Avatar, {colors as colorsOfAvatar, sizes as sizesOfAvatar, statusList as statusOfAvatar} from '../src/Avatar';
 
@@ -43,6 +44,36 @@ storiesOf('Basic', module)
                     <ActivityIndicator width={100} height={100} />
                     <ActivityIndicator width={150} height={150} />
                     <ActivityIndicator width={200} height={200} />
+                </StoryBody>
+            );
+        })
+    )
+    .add(
+        'Align',
+        withInfo({
+            inline: true,
+            header: true,
+            TableComponent
+        })(() => {
+            const alignments = select('Align', alignmentsOfAlign, 'left');
+            return (
+                <StoryBody>
+                    <Align align={alignments}>
+                        <Text>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Debitis deleniti dolor eaque ex facilis numquam rem, repellat sint voluptates!
+                            A corporis dolores, eos ex ipsum magnam omnis quaerat quam voluptates!
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Debitis deleniti dolor eaque ex facilis numquam rem, repellat sint voluptates!
+                            A corporis dolores, eos ex ipsum magnam omnis quaerat quam voluptates!
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Debitis deleniti dolor eaque ex facilis numquam rem, repellat sint voluptates!
+                            A corporis dolores, eos ex ipsum magnam omnis quaerat quam voluptates!
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Debitis deleniti dolor eaque ex facilis numquam rem, repellat sint voluptates!
+                            A corporis dolores, eos ex ipsum magnam omnis quaerat quam voluptates!
+                        </Text>
+                    </Align>
                 </StoryBody>
             );
         })
