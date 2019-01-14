@@ -1,4 +1,4 @@
-.form-input
+.input-container
   .input
     .required
       color: red
@@ -15,7 +15,10 @@
       margin-top: -26px
       margin-right: 20px
       font-size: 18px
-.form-input.sm
+  .feedback-text
+    font-size: 12px
+    margin-top: 10px
+.input-container.sm
   .input
     .required
       margin-top: -20px
@@ -30,7 +33,7 @@
       margin-top: -21px
       margin-right: 5px
       font-size: 16px
-.form-input.lg
+.input-container.lg
   .input
     .required
       margin-top: -28px
@@ -45,7 +48,7 @@
       margin-top: -31px
       margin-right: 20px
       font-size: 20px
-.form-input.xl
+.input-container.xl
   .input
     .required
       margin-top: -33px
@@ -60,9 +63,7 @@
       margin-top: -36px
       margin-right: 20px
       font-size: 22px
-  .feedback-text
-    font-size: 12px
-    margin-top: 10px
+
 .form-control[disabled]
   cursor: not-allowed
 .form-control.form-control-xl
@@ -73,3 +74,24 @@
 .form-control.invalid
   border-color: red
   box-shadow: 0 0 0 2px rgba(207, 39, 72, 0.25)
+.input-container.error
+  .input
+    input
+      border-color: red
+      box-shadow: 0 0 0 2px rgba(207, 39, 72, 0.25)
+  .feedback-text
+    color: red
+.input-container.success
+  .input
+    input
+      border-color: limegreen
+      box-shadow: 0 0 0 2px rgba(60, 207, 63, 0.25)
+  .feedback-text
+    color: limegreen
+.input-container.warning
+  .input
+    input
+      border-color: #edd00d
+      box-shadow: 0 0 0 2px rgba(255, 197, 24, 0.36)
+  .feedback-text
+    color: #edd00d

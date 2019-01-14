@@ -88,14 +88,13 @@ const propTypes = {
      */
     onKeyPress: PropTypes.func,
     /**
-     * A prop used from a parent element, to inform to this compoment if the parent test passes.
-     * Must return true or false.
-     */
-    isValid: PropTypes.bool,
-    /**
-     * Error message the will appeared when a error occur (when state is invalid).
+     * A feedback text container.
      */
     feedbackText: PropTypes.string,
+    /**
+     * Show or not the feedback text container.
+     */
+    showFeedbackText: PropTypes.bool,
     /**
      * Define if component must have accept only numbers.
      */
@@ -141,6 +140,9 @@ const propTypes = {
         PropTypes.bool
     ]),
 
+    /**
+     * Show check icon.
+     */
     ok: PropTypes.bool
 };
 
@@ -155,21 +157,20 @@ const defaultProps = {
     onKeyPress: () => {},
     onChange: () => {},
     onFocus: () => {},
-    isValid: true,
     disabled: false,
     waiting: false,
     mask: false,
     maxLength: -1,
     tabIndex: 0,
     pipe: false,
-    ok: false
+    ok: false,
+    showFeedbackText: false
 };
 
 class Input extends UiComponent {
 
     state = {
         focused: false,
-        invalid: false,
         value: this.props.value
     };
 
@@ -197,55 +198,6 @@ class Input extends UiComponent {
     };
 
     /**
-     * Bind component update, to set state of invalid attribute.
-     *
-     * @param prevProps
-     * @param prevState
-     */
-    componentDidUpdate = (prevProps, prevState) => {
-        if (prevProps.isValid !== this.props.isValid) {
-            this.setState({
-                invalid: !this.props.isValid
-            });
-        }
-    };
-
-    /**
-     * Change state of focused state.
-     */
-    labelAnimation = () => {
-        this.setState({
-            focused: true
-        });
-    };
-
-    /**
-     * Validate method called every time than elements is changed.
-     */
-    validate = () => {
-        if (
-            ! this.props.isValid
-            || (this.props.required && this.state.value === '')
-        ) {
-            this.setState({invalid: true});
-        } else {
-            this.setState({invalid: false});
-        }
-    };
-
-    /**
-     * Check if input has a empty value, to reset the label
-     * to original position.
-     */
-    resetLabel = () => {
-        if (! this.state.value) {
-            this.setState({
-                focused: false
-            });
-        }
-    };
-
-    /**
      * Focus handler.
      * Called externally.
      */
@@ -254,41 +206,22 @@ class Input extends UiComponent {
     };
 
     /**
-     * onBlur handler.
-     *
-     * @param e
-     */
-    handleOnBlur = (e) => {
-        e.persist();
-
-        setTimeout(() => {
-            this.setState({
-                invalid: !this.props.isValid
-            }, () => this.props.onBlur(e, !this.state.invalid));
-        }, 100);
-
-        this.resetLabel();
-    };
-
-    /**
      * onChange handler.
      *
      * @param e
      */
     handleOnChange = (e) => {
-        this.props.onChange(e, !this.state.invalid);
+        this.props.onChange(e);
 
-        const setState = (value) => this.setState({
+        const setValueState = value => this.setState({
             value: this.props.pipe.constructor === Function ? this.props.pipe(value) : value
-        }, () => {
-            this.validate();
         });
 
         // Number only constraint...
         if (this.props.numberOnly === true) {
             const re = /^[0-9\b]+$/;
             if (e.target.value === '' || re.test(e.target.value)) {
-                setState(e.target.value);
+                setValueState(e.target.value);
             }
             return;
         }
@@ -296,42 +229,14 @@ class Input extends UiComponent {
         // maxLength constraint...
         if(this.props.maxLength !== -1) {
             if (e.target.value.length <= this.props.maxLength) {
-                setState(e.target.value);
+                setValueState(e.target.value);
             }
             return;
         }
 
         // other cases...
-        setState(e.target.value);
+        setValueState(e.target.value);
 
-    };
-
-    /**
-     * onFocus handler.
-     *
-     * @param e
-     */
-    handleOnFocus = (e) => {
-        this.props.onFocus(e);
-        this.labelAnimation();
-    };
-
-    /**
-     * onKeyUp handler.
-     *
-     * @param e
-     */
-    handleOnKeyUp = (e) => {
-        this.props.onKeyUp(e);
-    };
-
-    /**
-     * onKeyPress handler.
-     *
-     * @param e
-     */
-    handleOnKeyPress = (e) => {
-        this.props.onKeyUp(e);
     };
 
     render() {
@@ -340,12 +245,14 @@ class Input extends UiComponent {
 
         const className = [sizesClasses[this.props.size]];
 
-        if (this.state.invalid) {
-            className.push('invalid');
-        }
+        const containerClasses = [
+            "input-container",
+            this.props.size,
+            this.props.state
+        ];
 
         return (
-            <div className={"form-input " + this.props.size}>
+            <div className={ containerClasses.join(' ') }>
                 <div className="input">
                     <Tag
                         className={className.join(' ')}
@@ -354,15 +261,11 @@ class Input extends UiComponent {
                         name={ this.props.name }
                         value={ this.state.value }
                         placeholder={this.props.placeholder}
-                        style={{
-                            color: this.props.color,
-                            borderColor: this.state.invalid && 'red'
-                        }}
-                        onFocus={ e => this.handleOnFocus(e) }
+                        onFocus={ this.props.onFocus }
                         onChange={ e => this.handleOnChange(e) }
-                        onBlur={ e => this.handleOnBlur(e) }
-                        onKeyUp={ e => this.handleOnKeyUp(e) }
-                        onKeyPress={e => this.handleOnKeyPress(e)}
+                        onBlur={ this.props.onBlur }
+                        onKeyUp={ this.props.onKeyUp }
+                        onKeyPress={ this.props.onKeyPress }
                         disabled={this.props.disabled || this.props.waiting}
                         mask={this.props.mask || ''}
                         required={this.props.required}
@@ -386,9 +289,13 @@ class Input extends UiComponent {
                     { this.props.ok && <Icon name="check" className="check" /> }
                 </div>
 
-                <div className="feedback-text" style={{display: this.state.invalid ? '' : 'none'}}>
-                    { this.props.feedbackText }
-                </div>
+                {
+                    this.props.showFeedbackText &&
+                    <div className="feedback-text">
+                        { this.props.feedbackText }
+                    </div>
+                }
+
             </div>
         );
     }

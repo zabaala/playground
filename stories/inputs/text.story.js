@@ -16,10 +16,10 @@ const textFieldStory = {
         const disabled = boolean('Disabled', false);
         const required = boolean('Required', false);
         const waiting = boolean('Waiting', false);
-        const isValid = boolean('Valid', true);
+        const showFeedbackText = boolean('Show feedback text', false);
         const ok = boolean('Ok', true);
         const placeholder = text('Placeholder', 'Type your full name here...');
-        const feedbackText = text('Feedback Text', 'Invalid value.');
+        const feedbackText = text('Feedback Text', 'This is a feedback text.');
         const onChangeText = text('onChange Text', 'Changed...');
         const size = select('Size', textInputSizes, 'md');
         const type = select('Type', textInputTypes, 'text');
@@ -41,7 +41,7 @@ const textFieldStory = {
                     placeholder={placeholder}
                     feedbackText={feedbackText}
                     onChange={action(onChangeText)}
-                    isValid={isValid}
+                    showFeedbackText={showFeedbackText}
                 />
             </div>
         );
