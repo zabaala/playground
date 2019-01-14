@@ -14,10 +14,11 @@ const defaultProps = {
 const Icon = (props) => {
     const {
         name,
+        className,
         ...attributes
     } = props;
 
-    const _className = `fe fe-${name}`;
+    const _className = `fe fe-${name} ${className}`;
 
     return (
         <i className={_className} {...attributes} />

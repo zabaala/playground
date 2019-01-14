@@ -11,7 +11,7 @@ const TableComponent = ({ propDefinitions }) => {
                     <span
                         className="text-muted"
                         style={{fontWeight: '500', fontSize: '12px'}}
-                        dangerouslySetInnerHTML={{__html: description.replace(/(?:\r\n|\r|\n)/g, '<br/>')}}>
+                        dangerouslySetInnerHTML={{__html: description && description.replace(/(?:\r\n|\r|\n)/g, '<br/>')}}>
                     </span>
                 </td>
                 <td className="s-14">{propType.name}</td>

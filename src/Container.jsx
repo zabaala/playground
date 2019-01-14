@@ -17,14 +17,7 @@ const defaultProps = {
     className: ''
 };
 
-const Container = (props) => {
-
-    const {
-        className,
-        children,
-        fluid,
-        ...attributes
-    } = props;
+const Container = ({className, children, fluid, ...attributes}) => {
 
     const containerClass = fluid ? 'container-fluid' : 'container';
     const _className = `${containerClass} ${className}`;
