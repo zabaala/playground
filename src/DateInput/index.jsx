@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import TextField, { states as availableInputStates } from "../Input";
+import Input, { states as availableInputStates } from "../Input";
 import * as moment from 'moment';
 
 const propTypes = {
@@ -63,7 +63,7 @@ class DateField extends Component {
         } = this.props;
 
         return (
-            <TextField
+            <Input
                 type="tel" // hacking to show a numeric keyboard to the user.
                 name={name}
                 mask={mask}
