@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardHeader from '../src/CardHeader';
-import CardBody from '../src/CardBody';
-import CardFooter from "../src/CardFooter";
+import CardHeader from '../CardHeader';
+import CardBody from '../CardBody';
+import CardFooter from "../CardFooter";
 import classnames from 'classnames';
 
 const propTypes = {};

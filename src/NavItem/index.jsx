@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Link, { targetList as targetListOfLink } from './Link';
-import Icon from './Icon';
+import Link, { targetList as targetListOfLink } from '../Link';
+import Icon from '../Icon';
 
 export const targetList = targetListOfLink;
 

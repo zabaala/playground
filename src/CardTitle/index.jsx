@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Title from '../src/Title';
+import Title from '../Title';
 
 const propTypes = {};
 const defaultProps = {};

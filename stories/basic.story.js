@@ -116,7 +116,7 @@ storiesOf('Basic', module)
             const color = select('Color', ['', ...colorsOfAvatar], 'green');
             const size = select('Size', sizesOfAvatar, 'xxl');
             const status = select('Status', statusOfAvatar, 'green');
-            const avatarSrc = text('Src', 'https://scontent.ffor10-1.fna.fbcdn.net/v/t1.0-1/p160x160/33204808_10209559206337566_1074408325614927872_n.jpg?_nc_cat=0&oh=8789984bad8adc7a0031a6cec3275ff3&oe=5C3B29CC');
+            const avatarSrc = text('Src', 'https://scontent.ffor11-1.fna.fbcdn.net/v/t1.0-9/33204808_10209559206337566_1074408325614927872_n.jpg?_nc_cat=105&_nc_ht=scontent.ffor11-1.fna&oh=784d2b3b09c65ef8ec37e313d6593385&oe=5CB7B393');
             return (
                 <StoryBody>
                     <Avatar
@@ -253,7 +253,7 @@ storiesOf('Basic', module)
             header: true,
             TableComponent
         })(() => {
-            const imageSrc = text('Src', 'https://scontent.ffor10-1.fna.fbcdn.net/v/t1.0-1/p160x160/33204808_10209559206337566_1074408325614927872_n.jpg?_nc_cat=0&oh=8789984bad8adc7a0031a6cec3275ff3&oe=5C3B29CC');
+            const imageSrc = text('Src', 'https://scontent.ffor11-1.fna.fbcdn.net/v/t1.0-9/33204808_10209559206337566_1074408325614927872_n.jpg?_nc_cat=105&_nc_ht=scontent.ffor11-1.fna&oh=784d2b3b09c65ef8ec37e313d6593385&oe=5CB7B393');
 
             const onLoad = () => {
                 console.log('Yeah, loaded!');
@@ -266,6 +266,8 @@ storiesOf('Basic', module)
             return (
                 <StoryBody>
                     <Image
+                        width={150}
+                        height={150}
                         src={imageSrc}
                         onLoad={onLoad}
                         onError={onError}
