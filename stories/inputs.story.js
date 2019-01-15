@@ -5,6 +5,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 
 // input stories...
 import textFieldStory from './inputs/text.story';
+import dateInputStory from './inputs/date.story';
 import TableComponent from "./Components/TableComponent";
 
 const config = {
@@ -21,4 +22,12 @@ storiesOf('Inputs', module)
     .add(
         textFieldStory.name,
         withInfo(config)(textFieldStory.content)
-    );
+    )
+
+    .add(
+        dateInputStory.name,
+        withInfo(config)(dateInputStory.content)
+    )
+;
+
+
