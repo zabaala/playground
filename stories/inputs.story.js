@@ -7,6 +7,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import textFieldStory from './inputs/text.story';
 import dateInputStory from './inputs/date.story';
 import emailInputStory from './inputs/email.story';
+import cpfInputStory from './inputs/cpf.story';
 import TableComponent from "./Components/TableComponent";
 
 const config = {
@@ -33,6 +34,11 @@ storiesOf('Inputs', module)
     .add(
         emailInputStory.name,
         withInfo(config)(emailInputStory.content)
+    )
+    // Cpf input...
+    .add(
+        cpfInputStory.name,
+        withInfo(config)(cpfInputStory.content)
     )
 ;
 

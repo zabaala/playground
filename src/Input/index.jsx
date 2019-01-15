@@ -211,20 +211,17 @@ class Input extends UiComponent {
      * @param e
      */
     handleOnChange = (e) => {
-        this.props.onChange(e);
+        e.persist();
 
-        const setValueState = value => this.setState({
-            value: this.props.pipe.constructor === Function ? this.props.pipe(value) : value
-        });
-
-        // Number only constraint...
-        if (this.props.numberOnly === true) {
-            const re = /^[0-9\b]+$/;
-            if (e.target.value === '' || re.test(e.target.value)) {
-                setValueState(e.target.value);
+        const setValueState = value => {
+            if (this.props.numberOnly === true) {
+                value = value.replace(/[^0-9\\.]+/g, '');
             }
-            return;
-        }
+
+            this.setState({
+                value: this.props.pipe.constructor === Function ? this.props.pipe(value) : value
+            }, () => this.props.onChange(e));
+        };
 
         // maxLength constraint...
         if(this.props.maxLength !== -1) {
@@ -234,9 +231,7 @@ class Input extends UiComponent {
             return;
         }
 
-        // other cases...
         setValueState(e.target.value);
-
     };
 
     render() {
