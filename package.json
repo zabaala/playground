@@ -30,6 +30,7 @@
     "@storybook/addon-options": "^3.4.7",
     "@storybook/react": "^3.4.7",
     "babel-core": "^6.26.3",
+    "babel-plugin-transform-react-constant-elements": "^6.23.0",
     "prop-types": "^15.6.1"
   },
   "dependencies": {
