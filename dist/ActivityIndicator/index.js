@@ -12,7 +12,7 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _rolling = require('react-svg-loader!../../images/svg/rolling.svg');
+var _rolling = require('../../images/svg/rolling.svg');
 
 var _rolling2 = _interopRequireDefault(_rolling);
 
