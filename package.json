@@ -7,7 +7,7 @@
     "dev": "start-storybook -p 6006",
     "storybook": "npm run dev",
     "dist": "webpack --mode production",
-    "build": "build-storybook && dist && rm -Rf docs && mv ./storybook-static docs && git add docs && git commit -m 'build' && git push origin master && git push github master"
+    "build": "build-storybook && rm -Rf docs && mv ./storybook-static docs && git add docs dist && git commit -m 'build' && git push origin master && git push github master"
   },
   "repository": {
     "type": "git",
