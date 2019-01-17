@@ -15,6 +15,10 @@ module.exports = {
                 test: /\.(css|scss|sass)$/,
                 loaders: ["style-loader", "css-loader", "sass-loader"],
                 include: path.resolve(__dirname, "../")
+            },
+            {
+                test: /\.(svg)$/,
+                loaders: ["svg-react-loader"]
             }
         ]
     }

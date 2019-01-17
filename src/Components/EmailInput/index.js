@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Input, { states as availableInputStates } from "../Input";
+import Input, { states as availableInputStates } from "../Input/index";
 import * as moment from 'moment';
 
 const propTypes = {
@@ -8,26 +8,29 @@ const propTypes = {
     value: PropTypes.string,
     onChange: PropTypes.func,
     feedbackText: PropTypes.string,
-    mask: PropTypes.string,
-    dateFormat: PropTypes.string,
     required: PropTypes.bool,
     normalState: PropTypes.oneOf(availableInputStates)
 };
 
 const defaultProps = {
-    mask: '11/11/1111',
-    dateFormat: 'DD/MM/YYYY',
-    feedbackText: 'Data inválida',
+    feedbackText: 'Invalid e-mail.',
     required: false,
     onChange: () => {},
     availableInputStates: 'normal'
 };
 
-class DateField extends Component {
+class EmailInput extends Component {
 
     state = {
         isValid: false,
-        inputLength: 0
+        inputLength: 0,
+        value: '',
+        ok: false
+    };
+
+    isValid = () => {
+        const regexEmail =  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return regexEmail.test(this.state.value);
     };
 
     /**
@@ -37,12 +40,12 @@ class DateField extends Component {
      */
     handleOnChange = (e) => {
         e.persist();
-        const inputValueLength = e.target.value.replace(/[\/_]/g,'').length; // accepted chars length.
-        const dateIsValid = moment(e.target.value, this.props.dateFormat).isValid();
 
         this.setState({
-            inputLength: inputValueLength,
-            isValid: (inputValueLength === 8) && dateIsValid
+            inputLength: e.target.value.length,
+            isValid: this.isValid(),
+            value: e.target.value,
+            ok: this.isValid()
         }, () => {
             this.props.onChange(e, this.state.isValid);
         });
@@ -64,22 +67,22 @@ class DateField extends Component {
 
         return (
             <Input
-                type="tel" // hacking to show a numeric keyboard to the user.
+                type="email"
                 name={name}
-                mask={mask}
                 state={this.state.isValid ? normalState : (this.state.inputLength === 0 ? normalState : 'error')}
                 feedbackText={feedbackText}
-                showFeedbackText={this.state.inputLength >= 1 && !this.state.isValid}
+                showFeedbackText={this.state.inputLength > 0 && !this.state.isValid}
                 onChange={this.handleOnChange}
-                value={value}
+                value={this.state.value}
                 required={required}
+                ok={this.state.inputLength > 0 && this.state.ok && this.props.ok}
                 {...attributes}
             />
         );
     }
 }
 
-DateField.propTypes = propTypes;
-DateField.defaultProps = defaultProps;
+EmailInput.propTypes = propTypes;
+EmailInput.defaultProps = defaultProps;
 
-export default DateField;
+export default EmailInput;

@@ -6,7 +6,7 @@ import
     types as textInputTypes,
     sizes as textInputSizes,
     states as textInputStates
-} from '../../src/Input';
+} from '../../src/Components/Input';
 
 
 const textFieldStory = {

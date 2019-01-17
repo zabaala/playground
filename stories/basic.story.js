@@ -5,28 +5,28 @@ import TableComponent from './Components/TableComponent';
 import { withKnobs, text, select, boolean, number } from '@storybook/addon-knobs';
 import StoryBody from './Components/StoryBody';
 
-import ActivityIndicator from '../src/ActivityIndicator';
-import Align, { alignments as alignmentsOfAlign } from '../src/Align';
-import AvatarList from '../src/AvatarList';
-import Avatar, {colors as colorsOfAvatar, sizes as sizesOfAvatar, statusList as statusOfAvatar} from '../src/Avatar';
+import ActivityIndicator from '../src/Components/ActivityIndicator';
+import Align, { alignments as alignmentsOfAlign } from '../src/Components/Align';
+import AvatarList from '../src/Components/AvatarList';
+import Avatar, {colors as colorsOfAvatar, sizes as sizesOfAvatar, statusList as statusOfAvatar} from '../src/Components/Avatar';
 
-import Alert from '../src/Alert';
-import { types as alertTypes } from "../src/Alert";
+import Alert from '../src/Components/Alert';
+import { types as alertTypes } from "../src/Components/Alert";
 
-import Card from '../src/Card';
-import Container from '../src/Container';
-import Row from '../src/Row';
-import Col, { colWidths } from '../src/Col';
-import Color, { colors as colorsOfColor } from '../src/Color';
-import Icon from '../src/Icon';
-import Image from '../src/Image';
-import Link, { targetList } from '../src/Link';
-import Nav, { alignments as alignmentsOfNav } from '../src/Nav';
-import NavItem, { targetList as targetListOfNavItem } from '../src/NavItem';
-import Separator from '../src/Separator';
-import Size, {sizes as sizesOfSize } from '../src/Size';
-import Text from '../src/Text';
-import Title, {sizes as titleSizes} from '../src/Title';
+import Card from '../src/Components/Card';
+import Container from '../src/Components/Container';
+import Row from '../src/Components/Row';
+import Col, { colWidths } from '../src/Components/Col';
+import Color, { colors as colorsOfColor } from '../src/Components/Color';
+import Icon from '../src/Components/Icon';
+import Image from '../src/Components/Image';
+import Link, { targetList } from '../src/Components/Link';
+import Nav, { alignments as alignmentsOfNav } from '../src/Components/Nav';
+import NavItem, { targetList as targetListOfNavItem } from '../src/Components/NavItem';
+import Separator from '../src/Components/Separator';
+import Size, {sizes as sizesOfSize } from '../src/Components/Size';
+import Text from '../src/Components/Text';
+import Title, {sizes as titleSizes} from '../src/Components/Title';
 
 storiesOf('Basic', module)
 

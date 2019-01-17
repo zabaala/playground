@@ -1,5 +1,5 @@
 import React from 'react';
-import EmailInput from "../../src/EmailInput";
+import EmailInput from "../../src/Components/EmailInput";
 
 
 const emailInputStory = {

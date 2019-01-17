@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import CardTitle from '../CardTitle';
-import CardOptions from '../CardOptions';
+import CardTitle from '../CardTitle/index';
+import CardOptions from '../CardOptions/index';
 
 const propTypes = {
 };

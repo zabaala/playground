@@ -1,5 +1,5 @@
 import React from 'react';
-import DateField from "../../src/DateInput/index";
+import DateField from "../../src/Components/DateInput/index";
 
 
 const dateInputStory = {

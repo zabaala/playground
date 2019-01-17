@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Input, { states as availableInputStates } from "../Input";
+import Input, { states as availableInputStates } from "../Input/index";
 
 const propTypes = {
     name: PropTypes.string.isRequired,

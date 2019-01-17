@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import UiComponent from "../UiComponent";
-import MaskedInput from '../MaskedInput';
+import MaskedInput from '../MaskedInput/index';
 import ActivityIndicator from "../ActivityIndicator";
 import Icon from "../Icon";
 
@@ -167,7 +166,7 @@ const defaultProps = {
     showFeedbackText: false
 };
 
-class Input extends UiComponent {
+class Input extends Component {
 
     state = {
         focused: false,

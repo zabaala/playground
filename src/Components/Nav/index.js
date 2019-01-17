@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import NavItem from '../NavItem';
+import NavItem from '../NavItem/index';
 
 export const alignments = ['left', 'center', 'right'];
 

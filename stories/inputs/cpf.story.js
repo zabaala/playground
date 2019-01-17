@@ -1,5 +1,5 @@
 import React from 'react';
-import CpfInput from "../../src/CpfInput";
+import CpfInput from "../../src/Components/CpfInput";
 
 
 const cpfInputStory = {
