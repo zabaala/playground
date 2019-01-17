@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Rolling from 'react-svg-loader!../../images/svg/rolling.svg'
+import Rolling from '../../images/svg/rolling.svg'
 
 const propTypes = {
     /**
