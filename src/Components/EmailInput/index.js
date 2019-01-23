@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Input, { states as availableInputStates } from "../Input/index";
-import * as moment from 'moment';
 
 const propTypes = {
     name: PropTypes.string.isRequired,

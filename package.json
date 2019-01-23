@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "start-storybook -p 6006",
     "storybook": "npm run dev",
-    "dist": "webpack --mode production",
+    "dist": "webpack --mode production --config ./webpack.config.js",
     "build": "build-storybook && rm -Rf docs && mv ./storybook-static docs && git add docs dist && git commit -m 'build' && git push origin master && git push github master"
   },
   "repository": {
@@ -38,11 +38,10 @@
     "@storybook/react": "^3.4.7",
     "babel-core": "7.0.0-bridge.0",
     "babel-plugin-transform-react-constant-elements": "^6.23.0",
+    "node-sass": "^4.11.0",
     "prop-types": "^15.6.1",
     "sass-loader": "^7.1.0",
-    "svg-react-loader": "^0.4.6",
-    "node-sass": "^4.11.0",
-    "moment": "^2.23.0"
+    "svg-react-loader": "^0.4.6"
   },
   "dependencies": {
     "classnames": "^2.2.6",
